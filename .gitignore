@@ -46,3 +46,4 @@ operations/variable-scripts/variable.json
 
 # Hugo 
 .hugo_build.lock
+*private*

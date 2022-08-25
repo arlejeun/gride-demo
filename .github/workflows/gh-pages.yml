@@ -1,4 +1,6 @@
 name: Build and Deploy to GCP
+# Authentication GCP - see here
+# https://cloud.google.com/blog/products/identity-security/enabling-keyless-authentication-from-github-actions
 
 on:
   push:
