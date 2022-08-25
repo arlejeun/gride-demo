@@ -18,6 +18,13 @@ jobs:
           submodules: recursive  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - shell: bash
+        env:
+          SUPER_SECRET: ${{ secrets.gcp_credentials }}
+        run: |
+          echo "$SUPER_SECRET"
+      
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -27,10 +34,13 @@ jobs:
       - name: Build
         run: hugo
 
+      - name: Show Environment
+        run: echo $
+
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: '${{ secrets.gcp_credentials }}'
+          credentials_json: '$SUPER_SECRET'
 
       - name: Upload files
         id: 'upload-files'
